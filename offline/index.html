@@ -1,50 +1,62 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-  <meta name="theme-color" content="#0879B8">
-  <title>Mercados Jehosua</title>
-  <link rel="stylesheet" href="app.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0879B8">
+<title>Mercados Jehosua</title>
+<link rel="stylesheet" href="app.css">
 </head>
 <body>
 <header class="top">
-  <div class="brand">
-    <img src="logo-mercados-jehosua.png" alt="Mercados Jehosua">
-    <div><b>Mercados Jehosua</b><span>Catálogo offline</span></div>
-  </div>
-  <button class="quoteBtn" id="openQuote">Cotización <span id="quoteCount">0</span></button>
+  <div class="brandmark">MJ</div>
+  <div class="brand"><b>Mercados Jehosua</b><span>Catálogo 100% en la app</span></div>
+  <button id="openQuote" class="quote">Pedido <span id="quoteCount">0</span></button>
 </header>
 
 <section class="hero">
-  <span class="offline">✓ FUNCIONA SIN INTERNET</span>
+  <div class="badge">SIN NETLIFY · SIN INTERNET</div>
   <h1>Catálogo mayorista</h1>
-  <p>Busca por nombre o código. Guarda favoritos y arma tu cotización desde cualquier lugar.</p>
+  <p>Los productos están guardados dentro de la aplicación. Busca por código, nombre o categoría.</p>
 </section>
 
 <main>
-  <div class="searchRow">
-    <input id="search" placeholder="Buscar producto o código…" autocomplete="off">
+  <div class="filters">
+    <input id="search" placeholder="Buscar nombre o código..." autocomplete="off">
     <select id="category"><option value="">Todas las categorías</option></select>
   </div>
-  <div class="meta"><span id="resultCount"></span><button id="favFilter">☆ Solo favoritos</button></div>
+  <div class="toolbar">
+    <span id="resultCount">0 productos</span>
+    <button id="favFilter">☆ Solo favoritos</button>
+  </div>
   <div id="grid" class="grid"></div>
-  <div class="pager"><button id="prev">← Anterior</button><span id="pageInfo"></span><button id="next">Siguiente →</button></div>
+  <div class="pager">
+    <button id="prev">← Anterior</button>
+    <span id="pageInfo"></span>
+    <button id="next">Siguiente →</button>
+  </div>
 </main>
 
-<div class="drawer" id="drawer">
-  <div class="shade" id="closeShade"></div>
+<div id="drawer" class="drawer">
+  <div id="shade" class="shade"></div>
   <aside>
-    <div class="drawerHead"><div><b>Mi cotización</b><span>Guardada en este teléfono</span></div><button id="closeQuote">×</button></div>
+    <div class="drawerHead">
+      <div><b>Mi pedido</b><small>Se guarda en este teléfono</small></div>
+      <button id="closeQuote">×</button>
+    </div>
     <div id="quoteItems" class="quoteItems"></div>
     <div class="drawerActions">
-      <button class="secondary" id="clearQuote">Vaciar</button>
-      <button class="primary" id="shareQuote">Compartir cotización</button>
+      <button id="clearQuote" class="secondary">Vaciar</button>
+      <button id="shareQuote" class="primary">Compartir pedido</button>
     </div>
   </aside>
 </div>
 
-<script src="products.js"></script>
+<script src="products-01.js"></script>
+<script src="products-02.js"></script>
+<script src="products-03.js"></script>
+<script src="products-04.js"></script>
+<script src="products-05.js"></script>
 <script src="app.js"></script>
 </body>
 </html>
