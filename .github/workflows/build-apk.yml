@@ -1,0 +1,57 @@
+name: Build Android Offline APK
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Preparar catálogo offline
+        run: python3 tools/prepare_offline.py
+        env:
+          SITE_URL: https://leafy-narwhal-7889dd.netlify.app/
+
+      - name: Configurar Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.9'
+
+      - name: Compilar APK
+        run: gradle --no-daemon :app:assembleDebug
+
+      - name: Preparar nombre final
+        run: cp app/build/outputs/apk/debug/app-debug.apk Mercados-Jehosua-Offline.apk
+
+      - name: Subir artefacto
+        uses: actions/upload-artifact@v4
+        with:
+          name: Mercados-Jehosua-Offline
+          path: Mercados-Jehosua-Offline.apk
+          if-no-files-found: error
+
+      - name: Publicar APK en Releases
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release delete offline-latest --cleanup-tag -y || true
+          gh release create offline-latest Mercados-Jehosua-Offline.apk \
+            --target "$GITHUB_SHA" \
+            --title "Mercados Jehosua Offline APK" \
+            --notes "Aplicación Android independiente y funcional sin internet después de instalarse." \
+            --latest
