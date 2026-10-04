@@ -1,27 +1,18 @@
-# Mercados Jehosua Offline
+# Mercados Jehosua — APK Android
 
-Aplicación Android independiente del sitio web.
+Aplicación Android independiente para Mercados Jehosua.
 
-## Características
+- Se instala como APK en Android.
+- Usa la página oficial de Mercados Jehosua dentro de la aplicación.
+- Conserva catálogo, promociones, noticias y panel administrativo.
+- Admite selector de archivos para importación Excel/CSV.
+- Abre WhatsApp y enlaces externos cuando corresponde.
+- GitHub Actions compila el APK automáticamente y lo publica en Releases.
 
-- APK Android.
-- Funciona sin internet después de instalarse.
-- No solicita permiso `INTERNET`.
-- Incluye el catálogo de productos e imágenes dentro del APK.
-- Búsqueda por nombre o código.
-- Filtro por categorías.
-- Favoritos.
-- Cotización/pedido local con cantidades.
-- Compartir cotización desde Android.
-- Los datos del sitio se toman durante la compilación desde:
-  `https://leafy-narwhal-7889dd.netlify.app/`
+Sitio conectado:
 
-## APK
+`https://leafy-narwhal-7889dd.netlify.app/`
 
-GitHub Actions compila y publica automáticamente:
+APK publicado automáticamente:
 
-**Mercados-Jehosua-Offline.apk**
-
-en la release **offline-latest**.
-
-El código Android está en `app/` y los recursos offline se preparan con `tools/prepare_offline.py`.
+`Mercados-Jehosua.apk`
